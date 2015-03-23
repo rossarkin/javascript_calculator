@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head><title>Calculator</title></head>
+<body>
+  	<div id="input1field">
+    <input type="text" id="input1" value="0">
+   	</div>
+    <br>
+   	<div id="input2field">
+    <input type="text" id="input2" value="0">
+    <br>
+	</div>
+	<form id="operator">
+	<input type="radio" id="add" name="operator" value="add" checked> +
+	<input type="radio" id="subtract" name="operator" value="subtract"> -
+	<input type="radio" id="multiply" name="operator" value="multiply"> * 
+	<input type="radio" id="divide" name="operator" value="divide"> /
+  </form>
+  <p id="answer">0</p>
+
+  <script>
+  var operator ="add";
+  var input1 = 0;
+  var input2 = 0;
+  document.getElementById("input1").addEventListener("change", function(event){
+  		input1 = document.getElementById("input1").value;
+  		calculate(input1, input2);
+  }, false);
+  document.getElementById("input2").addEventListener("change", function(event){
+  		input2 = document.getElementById("input2").value;
+  		calculate(input1, input2);
+  }, false);
+  document.getElementById("operator").addEventListener("change", function(event){
+  		if (document.getElementById('add').checked) {
+  		operator = document.getElementById('add').value;
+	} else if (document.getElementById('subtract').checked) {
+  		operator = document.getElementById('subtract').value;
+	} else if (document.getElementById('multiply').checked) {
+  		operator = document.getElementById('multiply').value;
+	} else if (document.getElementById('divide').checked) {
+  		operator = document.getElementById('divide').value;
+	} 
+	calculate(input1, input2);
+  }, false);
+
+  function calculate(input1, input2){
+  	input_1 = parseFloat(input1);
+  	input_2 = parseFloat(input2);
+  	if(operator=="add"){
+  		var x = input_1 + input_2;
+  		document.getElementById("answer").innerHTML = x;
+  	} else if(operator=="subtract"){
+  		var x = input_1 - input_2;
+  		document.getElementById("answer").innerHTML = x;
+  	} else if(operator=="multiply"){
+  		var x = input_1*input_2;
+  		document.getElementById("answer").innerHTML = x;
+  	} else if(operator=="divide"){
+  		var x = input_1 / input_2;
+  		document.getElementById("answer").innerHTML = x;
+  	}
+  }
+  </script>
+</body>
+</html>
